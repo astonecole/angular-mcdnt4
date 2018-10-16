@@ -1,0 +1,36 @@
+<h2>Hello {{ name }} {{ getName() }}</h2>
+
+<input type="text" [(ngModel)]="mytext" class="{{ 'myclass' }}">
+<span>{{ mytext.length }}</span>
+
+<p>{{ mytext }}</p>
+
+<hr>
+
+<!-- <div class="app-hello"></div> -->
+<!-- <app-hello></app-hello> -->
+<div app-hello></div>
+
+<hr>
+
+<div class="btn btn-primary"
+        [hidden]="mytext.length < 2"
+        [style.backgroundColor]="getColor(mytext)"
+        (click)="handleEvent($event)">On</div>
+
+<p [textContent]="'N importe quoi'"></p>
+
+<hr>
+
+<div class="container">
+  <h2>Two way data binding</h2>
+
+  <div class="form-group">
+    <label>One Way</label>
+    <input class="form-control" type="text" (input)="changeValueData($event)">
+
+    <label>Two way</label>
+    <input class="form-control" type="text" [(ngModel)]="valueData">
+  </div>
+  <p>{{ valueData }}</p>
+</div>
