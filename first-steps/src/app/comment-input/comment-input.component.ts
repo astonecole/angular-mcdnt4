@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-comment-input',
@@ -6,15 +6,18 @@ import { Component } from '@angular/core';
     styleUrls: ['./comment-input.component.css']
 })
 export class CommentInputComponent {
+    @Input('maxLen') maxChars = 160;
+    @Input() label = 'Commentaire';
+
+    @Output('onComment') textEvent: EventEmitter<string> = new EventEmitter<string>();
+
     text = '';
-    maxChars = 160;
-    label = 'Commentaire';
 
     addComment(text: string) {
-        console.log(text);
+        this.textEvent.emit(text);
     }
 
     checkMaxChars(): boolean {
-        return this.text.length === this.maxChars;
+        return this.text.length === Number(this.maxChars);
     }
 }

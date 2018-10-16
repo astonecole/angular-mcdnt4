@@ -15,4 +15,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular title';
+  comments: {text: string, createdAt: Date}[] = [];
+
+  addMessage(event) {
+    this.comments.push({
+      text: event,
+      createdAt: new Date()
+    });
+  }
 }
