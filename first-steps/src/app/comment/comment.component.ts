@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Comment } from '../model/comment';
 
@@ -9,10 +9,14 @@ import { Comment } from '../model/comment';
 })
 export class CommentComponent implements OnInit {
   @Input() comment: Comment;
+  @Output() commentOutput: EventEmitter<Comment> = new EventEmitter<Comment>();
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  delete(comment: Comment) {
+    this.commentOutput.emit(comment);
   }
 
 }

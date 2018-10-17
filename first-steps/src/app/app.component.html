@@ -8,7 +8,10 @@
 
   <hr>
 
-  <app-comment *ngFor="let comment of comments"
-                [comment]="comment"></app-comment>
+  <app-comment
+    *ngFor="let comment of comments"
+    [comment]="comment"
+    (commentOutput)="removeComment($event)">
+  </app-comment>
 
 </div>

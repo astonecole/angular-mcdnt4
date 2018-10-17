@@ -26,4 +26,9 @@ export class AppComponent {
       createdAt: new Date()
     });
   }
+
+  removeComment(comment: Comment) {
+    const pos = this.comments.findIndex(c => c.id === comment.id);
+    this.comments.splice(pos, 1);
+  }
 }
