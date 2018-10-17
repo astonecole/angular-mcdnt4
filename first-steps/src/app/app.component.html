@@ -4,14 +4,18 @@
   <!-- <app-hello></app-hello> -->
   <app-comment-input maxLen="400" (onComment)="addMessage($event)"></app-comment-input>
 
-  <h2>Commentaires</h2>
+  <br><br>
+
+  <h2 (click)="showComment=!showComment">Commentaires</h2>
 
   <hr>
 
-  <app-comment
-    *ngFor="let comment of comments"
-    [comment]="comment"
-    (commentOutput)="removeComment($event)">
-  </app-comment>
+  <div *ngIf="!showComment">
+    <app-comment
+      *ngFor="let comment of comments"
+      [comment]="comment"
+      (commentOutput)="removeComment($event)">
+    </app-comment>
+  </div>
 
 </div>

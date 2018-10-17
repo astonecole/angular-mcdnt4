@@ -2,7 +2,8 @@
   <p class="card-body">{{ comment.text }}</p>
 
   <div class="card-footer">
-      <small>{{ comment.createdAt | date:'dd/MM/yyyy':'Europe/Paris' }}</small>
+      <!-- <small>{{ comment.createdAt | date:'dd/MM/yyyy':'Europe/Paris' }}</small> -->
+      <small>{{ comment.createdAt | dateDistance }}</small>
       <button (click)="delete(comment)" class="btn btn-sm btn-default float-right">
         <i class="far fa-trash-alt"></i>
       </button>

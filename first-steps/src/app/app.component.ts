@@ -17,7 +17,9 @@ import { Comment } from './model/comment';
 })
 export class AppComponent {
   title = 'Angular title';
-  comments: Comment[] = [];
+  comments: Comment[] = [
+    new Comment(Date.now(), 'blah blah blah', new Date('2018-10-12'))
+  ];
 
   addMessage(event) {
     this.comments.push({
