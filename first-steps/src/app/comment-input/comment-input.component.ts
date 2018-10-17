@@ -15,6 +15,7 @@ export class CommentInputComponent {
 
     addComment(text: string) {
         this.textEvent.emit(text);
+        this.text = '';
     }
 
     checkMaxChars(): boolean {

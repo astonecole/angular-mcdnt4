@@ -2,15 +2,13 @@
   <h1>Angular Application</h1>
 
   <!-- <app-hello></app-hello> -->
-  <app-comment-input maxLen="20" (onComment)="addMessage($event)"></app-comment-input>
+  <app-comment-input maxLen="400" (onComment)="addMessage($event)"></app-comment-input>
 
   <h2>Commentaires</h2>
 
   <hr>
 
-  <article class="card shadow mb-3" *ngFor="let comment of comments">
-    <p class="card-body">{{ comment.text }}</p>
-    <small class="card-footer">{{ comment.createdAt | date:'dd/MM/yyyy':'Europe/Paris' }}</small>
-  </article>
+  <app-comment *ngFor="let comment of comments"
+                [comment]="comment"></app-comment>
 
 </div>

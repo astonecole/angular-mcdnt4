@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Comment } from './model/comment';
+
 /**
  * Data Binding
  * 
@@ -15,10 +17,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular title';
-  comments: {text: string, createdAt: Date}[] = [];
+  comments: Comment[] = [];
 
   addMessage(event) {
     this.comments.push({
+      id: Date.now(),
       text: event,
       createdAt: new Date()
     });

@@ -5,10 +5,12 @@
               class="form-control"
               [ngClass]="{'is-invalid': checkMaxChars()}"
               [(ngModel)]="text"
-              [maxlength]="maxChars"></textarea>
+              [maxlength]="maxChars" required></textarea>
     <small [ngClass]="{'invalid-feedback': checkMaxChars()}">
         Nombre de caractères {{ text.length }}/{{ maxChars }}
     </small>
 </div>
 
-<button class="btn btn-success" (click)="addComment(text)">Ajouter</button>
+<button class="btn btn-success"
+        (click)="addComment(text)"
+        [disabled]="!text.length">Ajouter</button>
