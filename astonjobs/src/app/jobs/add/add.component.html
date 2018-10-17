@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-title>Nouvelle annonce</mat-card-title>
+  <mat-card-subtitle>Nouvelle annonce</mat-card-subtitle>
+  <mat-card-content>
+    <p>Hello world</p>
+
+    <form class="form-fields">
+      <mat-form-field>
+        <mat-label>Titre</mat-label>
+        <input type="text" placeholder="Titre" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Société</mat-label>
+        <input type="text" placeholder="Société" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ville</mat-label>
+        <input type="text" placeholder="Ville" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Code Postal</mat-label>
+        <input type="text" placeholder="75001" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Description de l'annonce"></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Types de contrat">
+          <mat-option *ngFor="let type of contractTypes" [value]="type.id">
+            {{ type.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Date de départ">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="primary">Enregister</button>
+
+    </form>
+
+  </mat-card-content>
+
+</mat-card>
