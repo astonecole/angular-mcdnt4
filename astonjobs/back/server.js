@@ -23,11 +23,14 @@ api.post('/jobs', (req, res) => {
         job.id = uuidv4();
         db.push(job);
 
-        console.log(db);
         res.status(201).json(job);
     } else {
         res.status(500).json({message: 'Internal Server Error'});
     }
+});
+
+api.get('/jobs', (req, res) => {
+    res.json(db);
 });
 
 app.use('/api', api);

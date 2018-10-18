@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+import { Job } from '../model/job';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +17,10 @@ export class JobsService {
     return this.http.post(`${this.API_BASE_URL}/jobs`, job);
   }
 
-  findJob() {
-
+  findAll(): Observable<Job[]> {
+    return this.http.get<Job[]>(`${this.API_BASE_URL}/jobs`)
+            .pipe(
+              map(res => res)
+            );
   }
 }
