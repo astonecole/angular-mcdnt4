@@ -4,34 +4,34 @@
   <mat-card-content>
     <p>Hello world</p>
 
-    <form class="form-fields">
+    <form class="form-fields" [formGroup]="form" (ngSubmit)="addJob()">
       <mat-form-field>
         <mat-label>Titre</mat-label>
-        <input type="text" placeholder="Titre" matInput>
+        <input type="text" placeholder="Titre" formControlName="title" matInput>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Société</mat-label>
-        <input type="text" placeholder="Société" matInput>
+        <input type="text" placeholder="Société" formControlName="company" matInput>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Ville</mat-label>
-        <input type="text" placeholder="Ville" matInput>
+        <input type="text" placeholder="Ville" formControlName="city" matInput>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Code Postal</mat-label>
-        <input type="text" placeholder="75001" matInput>
+        <input type="text" placeholder="75001" formControlName="zipcode" matInput>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Description</mat-label>
-        <textarea matInput placeholder="Description de l'annonce"></textarea>
+        <textarea matInput placeholder="Description de l'annonce" formControlName="description"></textarea>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="Types de contrat">
+        <mat-select placeholder="Types de contrat" formControlName="contractType">
           <mat-option *ngFor="let type of contractTypes" [value]="type.id">
             {{ type.label }}
           </mat-option>
@@ -39,7 +39,7 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Date de départ">
+        <input matInput [matDatepicker]="picker" formControlName="startDate" placeholder="Date de départ">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

@@ -22,7 +22,17 @@ export class AddComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       title: '',
+      company: '',
+      city: '',
+      zipcode: null,
+      description: '',
+      contractType: '',
+      startDate: new Date(),
     });
+  }
+
+  addJob(): void {
+    console.log(this.form.value);
   }
 
 }
