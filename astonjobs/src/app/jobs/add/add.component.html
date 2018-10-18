@@ -2,36 +2,39 @@
   <mat-card-title>Nouvelle annonce</mat-card-title>
   <mat-card-subtitle>Nouvelle annonce</mat-card-subtitle>
   <mat-card-content>
-    <p>Hello world</p>
+
+    <div class="alert alert-{{ alert.color }}" *ngIf="alert.message !== ''">
+      {{ alert.message }}
+    </div>
 
     <form class="form-fields" [formGroup]="form" (ngSubmit)="addJob()">
       <mat-form-field>
         <mat-label>Titre</mat-label>
-        <input type="text" placeholder="Titre" formControlName="title" matInput>
+        <input type="text" placeholder="Titre" maxLength="255" formControlName="title" required matInput>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Société</mat-label>
-        <input type="text" placeholder="Société" formControlName="company" matInput>
+        <input type="text" placeholder="Société" maxLength="30" required formControlName="company" matInput>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Ville</mat-label>
-        <input type="text" placeholder="Ville" formControlName="city" matInput>
+        <input type="text" placeholder="Ville" maxLength="50" required formControlName="city" matInput>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Code Postal</mat-label>
-        <input type="text" placeholder="75001" formControlName="zipcode" matInput>
+        <input type="text" placeholder="75001" maxLength="12" required formControlName="zipcode" matInput>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Description</mat-label>
-        <textarea matInput placeholder="Description de l'annonce" formControlName="description"></textarea>
+        <textarea matInput placeholder="Description de l'annonce" maxLength="400" required formControlName="description"></textarea>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="Types de contrat" formControlName="contractType">
+        <mat-select placeholder="Types de contrat" required formControlName="contractType">
           <mat-option *ngFor="let type of contractTypes" [value]="type.id">
             {{ type.label }}
           </mat-option>
@@ -39,12 +42,12 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" formControlName="startDate" placeholder="Date de départ">
+        <input matInput [matDatepicker]="picker" required formControlName="startDate" placeholder="Date de départ">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <button type="submit" mat-raised-button color="primary">Enregister</button>
+      <button type="submit" [disabled]="!form.valid" mat-raised-button color="primary">Enregister</button>
 
     </form>
 

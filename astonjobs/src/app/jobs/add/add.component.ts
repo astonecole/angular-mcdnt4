@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { JobsService } from '../../services/jobs.service';
+import { Job } from '../../model/job';
 
 @Component({
   selector: 'app-add',
@@ -16,8 +18,9 @@ export class AddComponent implements OnInit {
   ];
 
   form: FormGroup;
+  alert = {message: '', color: 'success'};
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private jobService: JobsService) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -32,7 +35,17 @@ export class AddComponent implements OnInit {
   }
 
   addJob(): void {
-    console.log(this.form.value);
+    this.jobService
+        .addJob(this.form.value)
+        .subscribe(
+          (job: Job) => {
+            this.alert.message = `Le job '${job.title}' a bien été ajouté.`;
+            this.form.reset();
+          },
+          res => {
+            this.alert.message = res.statusText;
+            this.alert.color = 'danger';
+          }
+        );
   }
-
 }

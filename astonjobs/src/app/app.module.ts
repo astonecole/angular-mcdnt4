@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +25,7 @@ import { AddComponent } from './jobs/add/add.component';
 import { ListComponent } from './jobs/list/list.component';
 import { DetailsComponent } from './jobs/details/details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JobsService } from './services/jobs.service';
 
 const routes: Route[] = [
   { path: '', component: HomeComponent },
@@ -59,8 +61,9 @@ const routes: Route[] = [
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [JobsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
