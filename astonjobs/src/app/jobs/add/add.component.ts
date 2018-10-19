@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { JobsService } from '../../services/jobs.service';
 import { Job } from '../../model/job';
+import { contractTypes } from '../../data/jobs';
 
 @Component({
   selector: 'app-add',
@@ -9,13 +10,7 @@ import { Job } from '../../model/job';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-  contractTypes = [
-    { id: 1, label: 'Stage'},
-    { id: 2, label: 'Interim'},
-    { id: 3, label: 'CDD'},
-    { id: 4, label: 'CDI'},
-    { id: 5, label: 'Indépendant'},
-  ];
+  contractTypes = contractTypes;
 
   form: FormGroup;
   alert = {message: '', color: 'success'};

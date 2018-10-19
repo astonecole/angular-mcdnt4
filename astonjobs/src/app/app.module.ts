@@ -27,6 +27,8 @@ import { DetailsComponent } from './jobs/details/details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsService } from './services/jobs.service';
 import { DistanceToNowPipe } from './pipes/distance-to-now.pipe';
+import { BoxShadowDirective } from './directives/box-shadow.directive';
+import { TransclusionComponent } from './transclusion/transclusion.component';
 
 const routes: Route[] = [
   { path: '', component: HomeComponent },
@@ -44,6 +46,8 @@ const routes: Route[] = [
     ListComponent,
     DetailsComponent,
     DistanceToNowPipe,
+    BoxShadowDirective,
+    TransclusionComponent,
   ],
   imports: [
     BrowserModule,
