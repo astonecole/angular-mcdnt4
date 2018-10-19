@@ -36,8 +36,12 @@ api.get('/jobs', (req, res) => {
 api.get('/jobs/:id', (req, res) => {
     job = db.filter(item => item.id === req.params.id);
 
-    res.json(job);
-    console.log(job);
+    if (job[0]) {
+        res.json(job[0]);
+        return;
+    }
+
+    res.status(404).json({message: 'job introuvalble'});
 });
 
 app.use('/api', api);

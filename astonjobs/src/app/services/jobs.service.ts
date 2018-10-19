@@ -19,8 +19,15 @@ export class JobsService {
 
   findAll(): Observable<Job[]> {
     return this.http.get<Job[]>(`${this.API_BASE_URL}/jobs`)
-            .pipe(
-              map(res => res)
-            );
+      .pipe(
+        map(res => res)
+      );
+  }
+
+  findById(id: string): Observable<Job> {
+    return this.http.get<Job>(`${this.API_BASE_URL}/jobs/${id}`)
+      .pipe(
+        map(res => res)
+      );
   }
 }
