@@ -1,0 +1,18 @@
+.stars > span {
+    display: inline-block;
+}
+
+.star {
+    color: royalblue;
+}
+
+.stars > .active:before,
+.stars:hover > .star:before {
+    content: '★';
+    position: absolute;
+    cursor: pointer;
+}
+
+.stars > .star:hover ~ .star:before {
+    content: '';
+}
