@@ -26,6 +26,7 @@ import { ListComponent } from './jobs/list/list.component';
 import { DetailsComponent } from './jobs/details/details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsService } from './services/jobs.service';
+import { DistanceToNowPipe } from './pipes/distance-to-now.pipe';
 
 const routes: Route[] = [
   { path: '', component: HomeComponent },
@@ -42,6 +43,7 @@ const routes: Route[] = [
     AddComponent,
     ListComponent,
     DetailsComponent,
+    DistanceToNowPipe,
   ],
   imports: [
     BrowserModule,

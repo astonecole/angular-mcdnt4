@@ -14,9 +14,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// req.params == /:id
-// req.body   == {message: 'data'}
-// req.query  == ?name=aston
+// req.params.id    == /:id
+// req.body.message == {message: 'data'}
+// req.query.name   == ?name=aston
 api.post('/jobs', (req, res) => {
     if (req.body) {
         const job = req.body;
@@ -31,6 +31,13 @@ api.post('/jobs', (req, res) => {
 
 api.get('/jobs', (req, res) => {
     res.json(db);
+});
+
+api.get('/jobs/:id', (req, res) => {
+    job = db.filter(item => item.id === req.params.id);
+
+    res.json(job);
+    console.log(job);
 });
 
 app.use('/api', api);

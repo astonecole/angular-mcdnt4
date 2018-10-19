@@ -10,5 +10,6 @@ export class Job {
         public description: string,
         public contractType: string,
         public startDate: Date,
+        public publishedDate: Date,
     ) { };
 }

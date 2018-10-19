@@ -31,6 +31,7 @@ export class AddComponent implements OnInit {
       description: '',
       contractType: '',
       startDate: new Date(),
+      publishedDate: new Date(),
     });
   }
 
