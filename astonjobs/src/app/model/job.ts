@@ -1,15 +1,15 @@
 
 export class Job {
-    public id: string;
+    public id = '';
 
     constructor(
-        public title: string,
-        public company: string,
-        public city: string,
-        public zipcode: string,
-        public description: string,
-        public contractType: string,
-        public startDate: Date,
-        public publishedDate: Date,
+        public title = '',
+        public company = '',
+        public city = '',
+        public zipcode = '',
+        public description = '',
+        public contractType = '',
+        public startDate = new Date(),
+        public publishedDate = new Date(),
     ) { };
 }

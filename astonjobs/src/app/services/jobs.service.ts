@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { Job } from '../model/job';
@@ -28,6 +28,15 @@ export class JobsService {
     return this.http.get<Job>(`${this.API_BASE_URL}/jobs/${id}`)
       .pipe(
         map(res => res)
+      );
+  }
+
+  remove(id: string) {
+    return this.http.delete(`${this.API_BASE_URL}/jobs/${id}`)
+      .pipe(
+        tap(res => {
+          console.log(res);
+        })
       );
   }
 }

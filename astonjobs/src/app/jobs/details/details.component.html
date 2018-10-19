@@ -6,6 +6,6 @@
   <mat-card-subtitle>Parue il y a {{ job.publishedDate | distanceToNow }}.</mat-card-subtitle>
 
   <mat-card-actions>
-      <a mat-button [routerLink]="['/jobs', job.id]">Supprimer</a>
+      <a mat-button (click)="onRemove(job)">Supprimer</a>
     </mat-card-actions>
 </mat-card>

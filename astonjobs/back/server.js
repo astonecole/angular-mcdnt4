@@ -2,7 +2,21 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const uuidv4 = require('uuid/v4');
 
-let db = [];
+// Fixtures of MOCK DB.
+let db = [
+    {
+        id: uuidv4(),
+        title: "Job de tests",
+        company: "Aston",
+        description: "Description Test",
+        city: 'Lille',
+        zipcode: '59160',
+        contractType: 'CDD',
+        startDate: new Date(),
+        publishedDate: new Date(),
+    }
+];
+
 let app = express();
 app.use(bodyParser.json());
 
@@ -11,6 +25,7 @@ const api = express.Router();
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     next();
 });
 
@@ -41,6 +56,21 @@ api.get('/jobs/:id', (req, res) => {
         return;
     }
     res.status(404).json({message: 'job introuvalble'});
+});
+
+api.delete('/jobs/:id', (req, res) => {
+    const id = req.params.id;
+    const pos = db.findIndex(job => job.id === id);
+
+    if (pos > -1) {
+        db.splice(pos, 1);
+        res.status(204);
+        res.json();
+        return;
+    }
+
+    res.status(404);
+    res.json({message: 'Not Found'});
 });
 
 app.use('/api', api);
