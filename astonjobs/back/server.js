@@ -40,7 +40,6 @@ api.get('/jobs/:id', (req, res) => {
         res.json(job[0]);
         return;
     }
-
     res.status(404).json({message: 'job introuvalble'});
 });
 
