@@ -16,7 +16,6 @@ export class FlashMsgComponent implements OnInit {
   ngOnInit() {
     this.flashMsgService.messages.subscribe(
       data => {
-        console.log(data, this.messages);
         this.messages = [data, ...this.messages];
       }
     );

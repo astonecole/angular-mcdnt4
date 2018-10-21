@@ -18,7 +18,8 @@ import {
   MatFormFieldModule,
   MatNativeDateModule,
   MatDatepickerModule,
-  MatSelectModule
+  MatSelectModule,
+  MatBadgeModule,
 } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { AddComponent } from './jobs/add/add.component';
@@ -67,6 +68,7 @@ const routes: Route[] = [
     MatNativeDateModule,
     MatDatepickerModule,
     MatSelectModule,
+    MatBadgeModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
