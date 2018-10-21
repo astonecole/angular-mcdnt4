@@ -1,11 +1,7 @@
 <mat-card>
-  <mat-card-title>Nouvelle annonce</mat-card-title>
-  <mat-card-subtitle>Nouvelle annonce</mat-card-subtitle>
+  <mat-card-title>Jobs</mat-card-title>
+  <mat-card-subtitle>Ajouter une nouvelle annonce</mat-card-subtitle>
   <mat-card-content>
-
-    <div class="alert alert-{{ alert.color }}" *ngIf="alert.message !== ''">
-      {{ alert.message }}
-    </div>
 
     <form class="form-fields" [formGroup]="form" (ngSubmit)="addJob()">
       <mat-form-field>

@@ -10,10 +10,10 @@ export class AppComponent {
   title = 'astonjobs';
 
   constructor() {
-    let np = new NewsPaper();
-    let toto = new Reader('Toto');
-    let chuck = new Reader('Chuck');
-    let trivet = new Reader('Trivet');
+    const np = new NewsPaper();
+    const toto = new Reader('Toto');
+    const chuck = new Reader('Chuck');
+    const trivet = new Reader('Trivet');
 
     np.addObserver(toto);
     np.addObserver(chuck);

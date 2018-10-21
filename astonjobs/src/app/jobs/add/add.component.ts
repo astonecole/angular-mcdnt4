@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { JobsService } from '../../services/jobs.service';
 import { Job } from '../../model/job';
 import { contractTypes } from '../../data/jobs';
+import { FlashMsgService } from '../../services/flash-msg.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add',
@@ -11,11 +13,13 @@ import { contractTypes } from '../../data/jobs';
 })
 export class AddComponent implements OnInit {
   contractTypes = contractTypes;
-
   form: FormGroup;
-  alert = {message: '', color: 'success'};
 
-  constructor(private formBuilder: FormBuilder, private jobService: JobsService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private jobService: JobsService,
+    private flashMsgService: FlashMsgService
+  ) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -35,12 +39,17 @@ export class AddComponent implements OnInit {
         .addJob(this.form.value)
         .subscribe(
           (job: Job) => {
-            this.alert.message = `Le job '${job.title}' a bien été ajouté.`;
             this.form.reset();
+            this.flashMsgService.addMessage({
+              text: `Le job '${job.title}' a bien été ajouté.`,
+              type: 'success'
+            });
           },
           res => {
-            this.alert.message = res.statusText;
-            this.alert.color = 'danger';
+            this.flashMsgService.addMessage({
+              text: res.statusText,
+              type: 'danger'
+            });
           }
         );
   }

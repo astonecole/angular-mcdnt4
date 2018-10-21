@@ -1,0 +1,5 @@
+
+<div *ngFor="let msg of messages; let i = index" class="alert alert-{{ msg.type }}">
+  <div class="alert-text">{{ msg.text }}</div>
+  <div class="alert-close-btn"><a (click)="onClose(i)">X</a></div>
+</div>
