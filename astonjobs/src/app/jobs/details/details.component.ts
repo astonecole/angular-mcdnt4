@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobsService } from 'src/app/services/jobs.service';
 import { Job } from 'src/app/model/job';
+import { FlashMsgService } from '../../services/flash-msg.service';
 
 @Component({
   selector: 'app-details',
@@ -13,6 +14,7 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private jobsService: JobsService,
+    private flashMsgService: FlashMsgService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -32,6 +34,10 @@ export class DetailsComponent implements OnInit {
     this.jobsService.remove(job.id).subscribe(
       res => {
         this.router.navigate(['/jobs']);
+        this.flashMsgService.addMessage({
+          text: `Le job '${job.title}' a bien été supprimé.`,
+          type: 'success'
+        });
       },
       err => {}
     );
