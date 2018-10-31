@@ -5,6 +5,7 @@ import { Job } from '../../model/job';
 import { contractTypes } from '../../data/jobs';
 import { FlashMsgService } from '../../services/flash-msg.service';
 import { tap } from 'rxjs/operators';
+import { BadgeService } from 'src/app/services/badge.service';
 
 @Component({
   selector: 'app-add',
@@ -18,7 +19,8 @@ export class AddComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private jobService: JobsService,
-    private flashMsgService: FlashMsgService
+    private flashMsgService: FlashMsgService,
+    private badgeService: BadgeService
   ) { }
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class AddComponent implements OnInit {
               text: `Le job '${job.title}' a bien été ajouté.`,
               type: 'success'
             });
+            this.badgeService.increment();
           },
           res => {
             this.flashMsgService.addMessage({

@@ -31,6 +31,7 @@ import { DistanceToNowPipe } from './pipes/distance-to-now.pipe';
 import { BoxShadowDirective } from './directives/box-shadow.directive';
 import { TransclusionComponent } from './transclusion/transclusion.component';
 import { FlashMsgComponent } from './flash-msg/flash-msg.component';
+import { BadgeComponent } from './jobs/badge/badge.component';
 
 const routes: Route[] = [
   { path: '', component: HomeComponent },
@@ -51,6 +52,7 @@ const routes: Route[] = [
     BoxShadowDirective,
     TransclusionComponent,
     FlashMsgComponent,
+    BadgeComponent,
   ],
   imports: [
     BrowserModule,
